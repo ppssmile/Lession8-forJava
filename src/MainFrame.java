@@ -10,9 +10,9 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        JPanel jPanel1 = new JPanel(){
-            public Dimension getPreferredSize(){
-                return new Dimension(800,80);
+        JPanel jPanel1 = new JPanel() {
+            public Dimension getPreferredSize() {
+                return new Dimension(800, 80);
             }
         };
 
@@ -23,11 +23,11 @@ public class MainFrame extends JFrame {
         jPanel1.add(textField, BorderLayout.CENTER);
 
         JPanel jPanel2 = new JPanel();
-        jPanel2.setLayout(new GridLayout(4,5));
+        jPanel2.setLayout(new GridLayout(4, 5));
         add(jPanel2);
         JButton jButton;
         for (int i = 0; i < 3; i++) {
-            jButton = new JButton(String.valueOf(7+i));
+            jButton = new JButton(String.valueOf(7 + i));
             jButton.addActionListener(new DigitButtonListener(textField));
             jPanel2.add(jButton);
         }
@@ -39,7 +39,7 @@ public class MainFrame extends JFrame {
         jPanel2.add(jButton);
 
         for (int i = 0; i < 3; i++) {
-            jButton = new JButton(String.valueOf(4+i));
+            jButton = new JButton(String.valueOf(4 + i));
             jButton.addActionListener(new DigitButtonListener(textField));
             jPanel2.add(jButton);
         }
@@ -51,7 +51,7 @@ public class MainFrame extends JFrame {
         jPanel2.add(jButton);
 
         for (int i = 0; i < 3; i++) {
-            jButton = new JButton(String.valueOf(1+i));
+            jButton = new JButton(String.valueOf(1 + i));
             jButton.addActionListener(new DigitButtonListener(textField));
             jPanel2.add(jButton);
         }
@@ -69,6 +69,7 @@ public class MainFrame extends JFrame {
         jButton.addActionListener(new DigitButtonListener(textField));
         jPanel2.add(jButton);
         jButton = new JButton("=");
+        jButton.addActionListener(new CodeCalculate(textField));
         jPanel2.add(jButton);
         jButton = new JButton("*");
         jButton.addActionListener(new DigitButtonListener(textField));
@@ -78,12 +79,12 @@ public class MainFrame extends JFrame {
         jPanel2.add(jButton);
 
 
-
         setVisible(true);
 
         new ClearButtonListener(textField);
     }
-    public static class ClearButtonListener implements ActionListener{
+
+    public static class ClearButtonListener implements ActionListener {
         private JTextField inputField;
 
         public ClearButtonListener(JTextField textField) {
@@ -93,20 +94,6 @@ public class MainFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             inputField.setText("");
-        }
-    }
-
-    public static class EqualsExpression implements ActionListener{
-        private JTextField textField;
-
-        private EqualsExpression(JTextField textField){
-            this.textField=textField;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JTextField textField = new JTextField();
-
         }
     }
 }
